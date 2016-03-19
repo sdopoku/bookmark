@@ -42,5 +42,7 @@ urlpatterns = [
 
     # user registration urls
     url(r'^register/$', views.register, name='register'),
-    
+
+    # profile edit urls
+    url(r'^edit/$', views.edit, name='edit'),
 ]

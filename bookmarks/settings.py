@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social.apps.django_app.default',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -106,6 +107,30 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
-    
+
 # EMAIL BACKEND
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Media files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+# Authentication BACKEND
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'account.authentication.EmailAuthBackend',
+    'social.backends.facebook.Facebook2OAuth2',
+    'social.backends.twitter.TwitterOAuth',
+    'social.backends.google.GoogleOAuth2',
+)
+
+# Social Login
+SOCIAL_AUTH_FACEBOOK_KEY = ''
+SOCIAL_AUTH_FACEBOOK_SECRET = ''
+
+
+SOCIAL_AUTH_TWITTER_KEY = 'BmrGHTRDRAlbEySO2cs0d6DZj' # Twitter Consumer key
+SOCIAL_AUTH_TWITTER_SECRET = '9xkh1fSTyjJGX8hOSNRetbvqsLVlQaSa36P19oxXawWLzpdUF8' # Twitter Consumer Secret
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '410563123499-hlose4ikgf557mfcul7di170h1nj4ein.apps.googleusercontent.com' # Google Consumer Key
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'SzIaU0V9rtOCOq50CZx5rVkL'  # Google Consumer Secret
